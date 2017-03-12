@@ -5,7 +5,7 @@ export function addTodo(title, description) {
     type: 'ADD_TODO',
     payload: {
       id: ++uid,
-      isDone: false,
+      isCompleted: false,
       title: title,
       description: description,
       createAt: moment().format('LLLL')
@@ -40,5 +40,12 @@ export function markTodo(id) {
 export function markAll() {
   return {
     type: 'MARK_ALL'  
+  };
+}
+
+export function changeFilter(filter) {
+  return {
+    type: 'CHANGE_FILTER',
+    payload: filter
   };
 }

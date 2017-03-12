@@ -27,7 +27,7 @@ export default class ListItem extends Component {
     } else { 
       content = this.state.description;
     }
-    if(this.props.task.get('isDone')) {
+    if(this.props.task.get('isCompleted')) {
       return(
         <s>{content}</s>
       );

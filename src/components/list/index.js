@@ -3,10 +3,22 @@ import ListItem from '../item'
 export default class List extends Component {
   constructor(props) {
     super(props);
+    this.filterTodoList = this.filterTodoList.bind(this);
   }
 
-  hasTask(){
-    if (!this.props.todos.size) {
+  filterTodoList() {
+    switch (this.props.activeFilter) {
+      case 'completed':
+        return this.props.todos.filter(todo => todo.get('isCompleted'));
+      case 'active':
+        return this.props.todos.filterNot(todo => todo.get('isCompleted'));
+      default:
+        return this.props.todos;
+    }
+  }
+
+  hasTask(todoList){
+    if (!todoList.size) {
       return(
         <div className="alert alert-info">
          <h5 className="text-center"> Empty </h5>
@@ -15,7 +27,7 @@ export default class List extends Component {
     } else {
       return(
         <ul key="task-list" className="list-group" >
-          {this.props.todos.map((task) => (
+          {todoList.map((task) => (
             <ListItem key={task.get('id')} task={task} {...this.props} />
           ))}
         </ul>
@@ -24,9 +36,10 @@ export default class List extends Component {
   }
 
   render() {
+    const todoList = this.filterTodoList();
     return(
       <div>
-        {this.hasTask()}
+        {this.hasTask(todoList)}
       </div>
     );
   }

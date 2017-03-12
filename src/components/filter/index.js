@@ -1,25 +1,35 @@
 
 import React, { Component } from 'react';
+import cn from 'classnames';
 
 export default class Filter extends Component {
   constructor(props) {
     super(props);
+    this.filters = ['all', 'completed', 'active'];
   }
   
+  changeFilter(filter) {
+    this.props.changeFilter(filter);
+  }
+
   render() {
     return(
-      <div>
-        <ul className="nav nav-pills" role="tablist">
-          <li role="presentation" className="active">
-            <a href="#">All <span className="badge">42</span></a>
-          </li>
-          <li role="presentation">
-            <a href="#">Completed</a>
-          </li>
-          <li role="presentation">
-            <a href="#">Active <span className="badge">3</span></a>
-          </li>
-        </ul>
+      <div style={{margin:"5px 0"}}>
+        <div className="btn-group">
+          {
+            this.filters.map(filter => {
+              const className = cn('btn btn-default capitalize', {
+                active: this.props.activeFilter === filter,
+              });
+              return (
+                <button key={filter} className={className} onClick={this.changeFilter.bind(this,filter)}>
+                  <span className="text-capitalize">{filter}</span>
+                  {/*<span className="badge">0</span>*/}
+                </button>
+              );
+            })
+          }
+        </div>
       </div>
     );
   }

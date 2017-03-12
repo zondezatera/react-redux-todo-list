@@ -1,15 +1,16 @@
 import { List, Map } from 'immutable';
 
-const init = List();
+export default function todos(state = List() , action) {
 
-export default function reducer(state = init, action) {
   switch(action.type) {
     case 'ADD_TODO':
       return state.push(Map(action.payload));
+
     case 'REMOVE_TODO':
       return state.filter((todo) => {
          return todo.get('id') !== action.payload
         });
+
     case 'EDIT_TODO' :
       return state.map(todo => {
         if(todo.get('id') === action.payload.id) {
@@ -20,19 +21,25 @@ export default function reducer(state = init, action) {
           return todo;
         }
       });
+
     case 'MARK_TODO' :
       return state.map(todo => {
         if(todo.get('id') === action.payload) {
-          return todo.update('isDone', isDone => !isDone);
+          return todo.update('isCompleted', isCompleted => !isCompleted);
         } else {
           return todo;
         }
       });
+
     case 'MARK_ALL' :
       return state.map(todo => {
-        return todo.update('isDone', isDone => !isDone);
+        return todo.update('isCompleted', isCompleted => !isCompleted);
       });
+
+    case 'DELETE_ALL_TODOS' :
+      return state.clear();
+
     default:
-      return init;
+      return state;
   }
 }
