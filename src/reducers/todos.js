@@ -15,7 +15,7 @@ export default function todos(state = List() , action) {
       return state.map(todo => {
         if(todo.get('id') === action.payload.id) {
           return todo.update((t) => {
-            return t.set('title', action.payload.data.title)
+            return t.set({'title': action.payload.data.title, 'description': action.payload.data.description})
           });
         } else {
           return todo;
@@ -29,11 +29,6 @@ export default function todos(state = List() , action) {
         } else {
           return todo;
         }
-      });
-
-    case 'MARK_ALL' :
-      return state.map(todo => {
-        return todo.update('isCompleted', isCompleted => !isCompleted);
       });
 
     case 'DELETE_ALL_TODOS' :

@@ -37,9 +37,9 @@ export function markTodo(id) {
   };
 }
 
-export function markAll() {
+export function clearAll() {
   return {
-    type: 'MARK_ALL'  
+    type: 'DELETE_ALL_TODOS'  
   };
 }
 

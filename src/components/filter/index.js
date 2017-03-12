@@ -19,12 +19,11 @@ export default class Filter extends Component {
           {
             this.filters.map(filter => {
               const className = cn('btn btn-default capitalize', {
-                active: this.props.activeFilter === filter,
+                active: this.props.activeFilter == filter,
               });
               return (
                 <button key={filter} className={className} onClick={this.changeFilter.bind(this,filter)}>
                   <span className="text-capitalize">{filter}</span>
-                  {/*<span className="badge">0</span>*/}
                 </button>
               );
             })
