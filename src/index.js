@@ -1,18 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import configureStore from './store';
 import { AppContainer } from 'react-hot-loader';
-import App from './containers/App';
-const render = (Component) => {
+import Root from './root';
+
+const store = configureStore();
+function init (Component) {
   ReactDOM.render(
     <AppContainer>
-      <Component/>
+      <Component store={store} />
     </AppContainer>,
     document.getElementById('root')
   );
-};
-render(App);
+}
+
+init(Root);
 if (module.hot) {
-  module.hot.accept('./containers/App', () => {
-    render(App)
+  module.hot.accept('./root', () => {
+    inti(Root)
   });
 }
