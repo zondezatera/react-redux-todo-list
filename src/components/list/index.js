@@ -16,7 +16,7 @@ export default class List extends Component {
       return(
         <ul key="task-list" className="list-group" >
           {this.props.todos.map((task) => (
-            <ListItem key={task.get('id')} task={task} removeTodo={this.props.removeTodo} />
+            <ListItem key={task.get('id')} task={task} {...this.props} />
           ))}
         </ul>
       );

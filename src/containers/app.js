@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTodo, removeTodo } from '../actions/actions';
+import { addTodo, removeTodo, markTodo, editTodo } from '../actions/actions';
 import Header from '../components/header'
 import Form from '../components/form';
 import List from '../components/list';
+import Filter from '../components/filter';
 
 export class App extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ export class App extends Component {
       <div className="well" style={{width:"600px",margin: "100px auto"}}>
         <Header title="Reminders" />
         <Form addTodo={this.props.addTodo} />
-        <List todos={this.props.todos} removeTodo={this.props.removeTodo} />
+        <Filter />
+        <List {...this.props} />
       </div>
     );
   }
@@ -26,6 +28,8 @@ export default connect(
   }),
   {
     addTodo,
-    removeTodo
+    removeTodo,
+    markTodo,
+    editTodo
   }
 )(App);

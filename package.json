@@ -18,10 +18,12 @@
   "homepage": "https://github.com/zondezatera/react-redux-todo-list#readme",
   "dependencies": {
     "immutable": "^3.8.1",
+    "moment": "^2.17.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
+    "redux-persist": "^4.4.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^2.5.4"
   },
@@ -40,6 +42,7 @@
     "file-loader": "^0.10.1",
     "node-sass": "^4.5.0",
     "postcss-loader": "^0.9.1",
+    "react-edit-inline": "^1.0.8",
     "react-hot-loader": "^3.0.0-beta.6",
     "redux-devtools": "^3.3.2",
     "sass-loader": "^6.0.3",

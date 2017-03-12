@@ -11,7 +11,7 @@ export default class Form extends Component {
     const isEnterKey = (e.keyCode == 13);
     if(isEnterKey && (text.length > 0)) {
       input.value = '';
-      this.props.addTodo(text);
+      this.props.addTodo('test title-z', text);
     }
   }
   

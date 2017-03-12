@@ -1,12 +1,14 @@
+import moment from 'moment';
 let uid = 0;
-export function addTodo(text) {
+export function addTodo(title, description) {
   return {
     type: 'ADD_TODO',
     payload: {
       id: ++uid,
       isDone: false,
-      text: text,
-      createAt: Date.now()
+      title: title,
+      description: description,
+      createAt: moment().format('LLLL')
     }
   };
 }
@@ -18,12 +20,12 @@ export function removeTodo(id) {
   };
 }
 
-export function editTodo(id, text) {
+export function editTodo(id, data) {
   return {
     type: 'EDIT_TODO',
     payload: {
       id: id,
-      text: text,
+      data: data
     }
   };
 }
