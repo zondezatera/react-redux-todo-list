@@ -34,7 +34,7 @@ export default function todos(state = List() , action) {
       return state.clear();
 
     case 'persist/REHYDRATE':
-      return fromJS(action.payload.todoData);
+      return fromJS(action.payload.todoData) || state;
 
     default:
       return state;
