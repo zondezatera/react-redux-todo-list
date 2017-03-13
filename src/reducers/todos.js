@@ -14,7 +14,11 @@ export default function todos(state = List() , action) {
       return state.map(todo => {
         if(todo.get('id') === action.payload.id) {
           return todo.update((t) => {
-            return t.set({'title': action.payload.data.title, 'description': action.payload.data.description})
+            if(action.payload.type == 'title') {
+              return  t.set('title', action.payload.data.title);
+            } else{ 
+              return  t.set('description', action.payload.data.description);
+            }
           });
         } else {
           return todo;
@@ -34,7 +38,7 @@ export default function todos(state = List() , action) {
       return state.clear();
 
     case 'persist/REHYDRATE':
-      return fromJS(action.payload.todoData);
+      return fromJS(action.payload.todoData) || state;
 
     default:
       return state;

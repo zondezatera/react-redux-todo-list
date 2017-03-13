@@ -1,10 +1,9 @@
 import moment from 'moment';
-const uid = () => Math.random().toString(34).slice(2);
 export function addTodo(title, description) {
   return {
     type: 'ADD_TODO',
     payload: {
-      id: uid,
+      id: Math.random().toString(34).slice(2),
       isCompleted: false,
       title: title,
       description: description,
@@ -20,11 +19,12 @@ export function removeTodo(id) {
   };
 }
 
-export function editTodo(id, data) {
+export function editTodo(id, data, type='title') {
   return {
     type: 'EDIT_TODO',
     payload: {
       id: id,
+      type: type,
       data: data
     }
   };

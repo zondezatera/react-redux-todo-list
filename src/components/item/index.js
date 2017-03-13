@@ -18,7 +18,8 @@ export default class ListItem extends Component {
   }
   textChanged(data) {
     this.setState({...data});
-    return this.props.editTodo(this.props.task.get('id') ,{...data});
+    const type = Object.keys(data)[0];
+    return this.props.editTodo(this.props.task.get('id') ,{...data}, type);
   }
   renderContent(type) {
     let content = '';
