@@ -1,7 +1,6 @@
-import { List, Map } from 'immutable';
+import { List, Map, fromJS } from 'immutable';
 
 export default function todos(state = List() , action) {
-
   switch(action.type) {
     case 'ADD_TODO':
       return state.push(Map(action.payload));
@@ -33,6 +32,9 @@ export default function todos(state = List() , action) {
 
     case 'DELETE_ALL_TODOS' :
       return state.clear();
+
+    case 'persist/REHYDRATE':
+      return fromJS(action.payload.todoData);
 
     default:
       return state;

@@ -1,10 +1,10 @@
 import moment from 'moment';
-let uid = 0;
+const uid = () => Math.random().toString(34).slice(2);
 export function addTodo(title, description) {
   return {
     type: 'ADD_TODO',
     payload: {
-      id: ++uid,
+      id: uid,
       isCompleted: false,
       title: title,
       description: description,
