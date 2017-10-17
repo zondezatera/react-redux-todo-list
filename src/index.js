@@ -11,12 +11,12 @@ function init (Component) {
       <Component store={store} />
     </AppContainer>,
     document.getElementById('root')
-  );
+  )
 }
 
 init(Root);
 if (module.hot) {
   module.hot.accept('./root', () => {
     inti(Root)
-  });
+  })
 }
